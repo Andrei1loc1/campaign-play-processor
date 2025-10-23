@@ -1,7 +1,7 @@
 
 const campaignStore = {};
 
-function incrementCampaignPlay( {campaignID, screenID} ){
+export function incrementCampaignPlay( {campaignID, screenID} ){
     if( !campaignStore.campaignID){
         campaignStore.campaignID = {
             screens: {},
@@ -16,6 +16,6 @@ function incrementCampaignPlay( {campaignID, screenID} ){
     campaignStore.campaignID.screens.screenID += 1;
 }
 
-function getAllCampaigns(){
+export function getAllCampaigns(){
     return campaignStore;
 }
