@@ -14,7 +14,7 @@ const App = () => {
           smooth={true}
         />
       </div>
-      <main className='relative z-10 w-full items-center justify-center flex flex-col gap-10 pt-10'>
+      <main className='relative z-10 w-full items-center justify-center flex flex-col pt-10'>
         <LiquidNav />
         <Dashboard />
       </main>

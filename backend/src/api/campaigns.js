@@ -7,3 +7,5 @@ router.get('/', (req, res) => {
     const campaigns = getAllCampaigns();
     res.status(200).json(campaigns);
 })
+
+export default router;

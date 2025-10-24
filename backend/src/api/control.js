@@ -1,5 +1,5 @@
 import express from 'express';
-import { startProcess, stopProcess, processStatus } from '../core/campaignPlays';
+import { startProcess, stopProcess, processStatus } from '../core/campaignPlays.js';
 
 const router = express.Router();
 
@@ -17,3 +17,5 @@ router.get('/status', (req, res) => {
     const status = processStatus();
     res.status(200).json(status);
 })
+
+export default router;

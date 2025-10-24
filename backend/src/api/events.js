@@ -9,3 +9,5 @@ router.post('/', (req, res) => {
 
     res.status(202).json({ message: 'Event accepted' });
 });
+
+export default router;

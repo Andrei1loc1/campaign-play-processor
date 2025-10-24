@@ -1,41 +1,41 @@
-import { extractCampaign } from "./queue";
-import { QUEUE_EVENT_SIZE, PROCESS_INTERVAL_MS } from "../config/config";
-import { incrementCampaignPlay } from "./stats";
+import { extractCampaign } from "./queue.js";
+import { QUEUE_EVENT_SIZE, PROCESS_INTERVAL_MS } from "../config/config.js";
+import { incrementCampaignPlay } from "./stats.js";
 
 export function extractProcess(){
-    events = extractCampaign( QUEUE_EVENT_SIZE );
+    const events = extractCampaign( QUEUE_EVENT_SIZE );
 
     if( events.length === 0 )
         return;
 
     for( const event of events ){
         incrementCampaignPlay( {
-            campaignID: event.campaignID,
-            screenID: event.screenID
+            campaignID: event.campaign_id,
+            screenID: event.screen_id
         } );
     }
 }
 
 let intervalID = null;
-let isRunnig = false;
+let isRunning = false;
 
 export function startProcess(){
-    if( isRunnig )
+    if( isRunning )
         return;
 
     intervalID = setInterval( extractProcess, PROCESS_INTERVAL_MS );
-    isRunnig = true;
+    isRunning = true;
 }
 
 export function stopProcess(){
-    if( !isRunnig || intervalID === null )
+    if( !isRunning || intervalID === null )
         return;
 
     clearInterval( intervalID );
     intervalID=null;
-    isRunnig = false;
+    isRunning = false;
 }
 
 export function processStatus(){
-    return { isRunnig: isRunnig };
+    return { isRunning: isRunning };
 }
