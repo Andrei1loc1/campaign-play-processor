@@ -3,7 +3,7 @@ import React from 'react'
 const EventSimulator = () => {
   const CAMPAIGN_IDS = ['cmp-2025-ALPHA', 'cmp-2025-BETA', 'cmp-2025-GAMMA'];
   const SCREEN_IDS = ['screen-101', 'screen-102', 'screen-103', 'screen-104'];
-  const API_BASE_URL = process.env.VITE_API_BASE_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
 
   const getRandomId = (array) => array[Math.floor(Math.random() * array.length)];

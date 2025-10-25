@@ -1,7 +1,7 @@
 import React from 'react'
 
 const ControlButton = ({ onStatusChange }) => {
-  const API_BASE_URL = process.env.VITE_API_BASE_URL;
+  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
 
   const startProcess = async () => {
     try {
