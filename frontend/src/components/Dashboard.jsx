@@ -53,8 +53,7 @@ const Dashboard = () => {
   }, []);
 
   return (
-    <section className='flex-1 mx-5 mt-5 py-14 px-18
-      bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10'>
+    <section className='flex-1 mx-5 mt-5 py-14 px-18 bg-white/5 backdrop-blur-xl rounded-2xl border border-white/10'>
         <div className='w-full h-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6'>
             <div className='lg:col-span-1 space-y-6'>
                 <ProcessStatus isRunning={processRunning} />

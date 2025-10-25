@@ -16,26 +16,20 @@ I focused on making the UI feel like a real internal dashboard to match the conc
 
 ## Explanation of Architecture and Logic
 
-This section breaks down the core architecture and data flow to show how the system handles campaign play events asynchronously, demonstrating problem-solving and structured design.
+This section outlines the core architecture and data flow for asynchronous campaign play event processing.
 
 ### Data Flow
 
-The flow starts from the frontend and goes through the backend processing:
+1. **Event Simulation**: Frontend generates random events (`campaign_id`, `screen_id`, `timestamp`) and sends POST to `/events`.
+2. **Backend Reception**: Events are queued in-memory; backend responds with 202 status.
+3. **Asynchronous Processing**: Processor runs every 5 seconds, extracting up to 10 events to update stats.
+4. **Stats Retrieval**: Frontend fetches updated stats via GET `/campaigns` every 3 seconds for real-time display.
 
-1. **Event Simulation**: The frontend's EventSimulator component generates a random event (with `campaign_id`, `screen_id`, and `timestamp`) and sends a POST request to `/events`.
-2. **Backend Reception**: The backend's events API receives the event, and adds it to the in-memory `campaignsQueue` using the `addCampaign` function. It responds with a 202 status to acknowledge acceptance without immediate processing.
-3. **Asynchronous Processing**: The event processor (in `campaignPlays.js`) runs every 5 seconds via `setInterval`, extracting up to 10 events from the queue and updating the in-memory stats store.
-4. **Stats Retrieval**: The frontend fetches the latest campaign stats via GET `/campaigns` every 3 seconds, displaying real-time updates on the dashboard.
-
-This design ensures events are queued and processed asynchronously, preventing blocking and allowing for scalable simulation.
+This ensures non-blocking, scalable event handling.
 
 ### Asynchronous Processing (Event Processor)
 
-The event processor is the heart of the system, handling event processing in the background:
-
-- **How it Works**: The `startProcess` function in `campaignPlays.js` starts a `setInterval` that calls `extractProcess` every 5 seconds (defined by `PROCESS_INTERVAL_MS`).
-- **Processing Logic**: `extractProcess` pulls up to 10 events (based on `QUEUE_EVENT_SIZE`) from the queue using `extractCampaign`. For each event, it calls `incrementCampaignPlay` to update the in-memory `campaignStore`, incrementing total plays per campaign and per screen.
-- **Control**: The process can be started/stopped via the `/control/start` and `/control/stop` endpoints, which set/clear the interval and track the running status.
+The processor uses `setInterval` to call `extractProcess` every 5 seconds, pulling events from the queue and updating the in-memory `campaignStore`. Control via `/control/start` and `/control/stop` endpoints.
 
 ---
 
