@@ -14,7 +14,17 @@ I focused on making the UI feel like a real internal dashboard to match the conc
 
 ---
 
-## Project structure
+## Live Deploy On Render
+
+FRONTEND DASHBOARD:  
+👉 [https://campaign-play-processor-site.onrender.com/](https://campaign-play-processor-site.onrender.com/)
+
+BACKEND SERVER API:  
+👉 [https://campaign-play-processor-2.onrender.com/](https://campaign-play-processor-2.onrender.com/)
+
+---
+
+## Project structure ideea
 
 ```
 .
@@ -63,12 +73,6 @@ npm install
 npm run dev
 ```
 
-### 3. Open
-Visit:  
-👉 http://localhost:5173  
-👉 http://localhost:4000
-
----
 
 ## Tech Stack
 
@@ -97,9 +101,25 @@ Visit:
 
 ---
 
+
+## Time Spent
+
+I spent about 5-6 hours total on this project — it was a quick build, focusing on getting the core functionality working smoothly.
+
+---
+
+## Potential Improvements
+
+- Implement the database bonus for persistent storage and querying.
+- Add better error handling and user-friendly messages.
+- Optimize for performance for real-time updates and pagination for large event lists.
+- Improve mobile responsiveness and add unit tests.
+
+---
+
 ## Personal notes
 
-This was a fun challenge — I wanted to keep the logic simple, but structured like a real system.  
+This was a fun challenge — I wanted to keep the logic simple, but structured like a real system.
 The UI was inspired by a “digital screen control room” concept, with green highlights to suggest live system status.
 
 ---
