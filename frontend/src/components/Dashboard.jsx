@@ -5,10 +5,10 @@ import ProcessStatus from './ProcessStatus'
 import Refresh from './Refresh'
 import ControlButton from './ControlButton'
 import { TABLE_REFRESH_MS } from '../../../backend/src/config/config.js'
+import { API_BASE_URL } from '../constants/variable.js'
 
 
 const Dashboard = () => {
-  const API_BASE_URL = import.meta.env.VITE_API_BASE_URL;
   const [campaigns, setCampaigns] = useState({});
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [processRunning, setProcessRunning] = useState(false);
