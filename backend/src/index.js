@@ -10,7 +10,10 @@ await initializeDB();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.use(cors());
+app.use(cors({
+    origin: '*',
+    methods: 'GET,POST',
+}));
 app.use(express.json());
 
 app.use('/events', eventsRouter);

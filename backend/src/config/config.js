@@ -2,6 +2,6 @@
 
  export const PROCESS_INTERVAL_MS = 5000;
 
- export const PORT = 3000;
+ export const PORT = process.env.PORT || 3000;
 
  export const TABLE_REFRESH_MS = 3000;
