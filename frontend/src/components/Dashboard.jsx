@@ -30,7 +30,7 @@ const Dashboard = () => {
       const response = await fetch('http://localhost:3000/control/status');
       if (!response.ok) throw new Error('Failed to fetch status');
       const data = await response.json();
-      setProcessRunning(data.isRunnig);
+      setProcessRunning(data.isRunning || data.isRunnig);
     } catch (error) {
       console.error('Error fetching process status:', error);
     }
