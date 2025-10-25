@@ -4,9 +4,7 @@ import EventSimulator from './EventSimulator'
 import ProcessStatus from './ProcessStatus'
 import Refresh from './Refresh'
 import ControlButton from './ControlButton'
-import { TABLE_REFRESH_MS } from '../constants/variable.js'
-import { API_BASE_URL } from '../constants/variable.js'
-
+import { TABLE_REFRESH_MS, API_BASE_URL, STATUS_REFRESH_MS } from '../constants/variable.js'
 
 const Dashboard = () => {
   const [campaigns, setCampaigns] = useState({});
@@ -16,9 +14,8 @@ const Dashboard = () => {
   const fetchCampaignData = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/campaigns`);
-      if (!response.ok) {
+      if (!response.ok)
         throw new Error(`HTTP error: ${response.status}`);
-      }
       const data = await response.json();
       setCampaigns(data);
       setLastUpdate(new Date());
@@ -30,7 +27,8 @@ const Dashboard = () => {
   const fetchProcessStatus = async () => {
     try {
       const response = await fetch(`${API_BASE_URL}/control/status`);
-      if (!response.ok) throw new Error('Failed to fetch status');
+      if (!response.ok) 
+        throw new Error('Failed to fetch status');
       const data = await response.json();
       setProcessRunning(data.isRunning || data.isRunnig);
     } catch (error) {
@@ -50,7 +48,7 @@ const Dashboard = () => {
     fetchProcessStatus();
     const interval = setInterval(() => {
         fetchProcessStatus();
-    }, 2000);
+    }, STATUS_REFRESH_MS);
     return () => clearInterval(interval);
   }, []);
 
