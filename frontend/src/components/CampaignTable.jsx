@@ -17,7 +17,7 @@ const CampaignTable = ({ campaigns, lastUpdate }) => {
         <p className="absolute -top-8 left-2 text-gray-400 z-20">
             Last update: {lastUpdate.toLocaleTimeString()}
         </p>
-        <div className='w-full overflow-auto rounded-2xl bg-gradient-to-b from-green-500/10 to-blue-400/10' style={{minHeight:'330px', maxHeight: '330px' }}>
+        <div className='w-full overflow-auto rounded-2xl bg-gradient-to-b from-green-500/10 to-blue-400/10 min-h-[330px] max-h-[330px]'>
             
             {campaignsArray.length > 0 ? (
                 <table className="campaign-table" style={{ height: '100%' }}>

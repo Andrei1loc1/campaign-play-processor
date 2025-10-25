@@ -39,7 +39,7 @@ const EventSimulator = () => {
   return (
     <div className='event-card'>
         <p className='text-xl font-bold mb-5'>EVENT SIMULATOR</p>
-        <button onClick={simulateEvent} className='px-6 py-3 bg-white/10 backdrop-blur-md rounded-full font-bold hover:bg-white/20 transition cursor-pointer'>Simulate Event</button>
+        <button onClick={simulateEvent} className='glass-button-primary'>Simulate Event</button>
     </div>
   )
 }
