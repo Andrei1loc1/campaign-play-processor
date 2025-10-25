@@ -6,9 +6,9 @@ import Refresh from './Refresh'
 import ControlButton from './ControlButton'
 import { TABLE_REFRESH_MS } from '../../../backend/src/config/config.js'
 
-const API_BASE_URL = process.env.APP_API_BASE_URL;
 
 const Dashboard = () => {
+  const API_BASE_URL = process.env.SERVER_APP_API_URL;
   const [campaigns, setCampaigns] = useState({});
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [processRunning, setProcessRunning] = useState(false);
@@ -29,7 +29,7 @@ const Dashboard = () => {
 
   const fetchProcessStatus = async () => {
     try {
-      const response = await fetch('http://localhost:3000/control/status');
+      const response = await fetch(`${API_BASE_URL}/control/status`);
       if (!response.ok) throw new Error('Failed to fetch status');
       const data = await response.json();
       setProcessRunning(data.isRunning || data.isRunnig);

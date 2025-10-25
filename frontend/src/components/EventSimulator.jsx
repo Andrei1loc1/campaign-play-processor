@@ -3,6 +3,8 @@ import React from 'react'
 const EventSimulator = () => {
   const CAMPAIGN_IDS = ['cmp-2025-ALPHA', 'cmp-2025-BETA', 'cmp-2025-GAMMA'];
   const SCREEN_IDS = ['screen-101', 'screen-102', 'screen-103', 'screen-104'];
+  const API_BASE_URL = process.env.SERVER_APP_API_URL;
+
 
   const getRandomId = (array) => array[Math.floor(Math.random() * array.length)];
 
@@ -15,7 +17,7 @@ const EventSimulator = () => {
   const simulateEvent = async () => {
       const event = generateRandomEvent();
       try {
-              const response = await fetch('http://localhost:3000/events', {
+              const response = await fetch(`${API_BASE_URL}/events`, {
                   method: 'POST',
                   headers: {
                       'Content-Type': 'application/json',

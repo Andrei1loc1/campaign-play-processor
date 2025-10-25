@@ -1,9 +1,11 @@
 import React from 'react'
 
 const ControlButton = ({ onStatusChange }) => {
+  const API_BASE_URL = process.env.SERVER_APP_API_URL;
+
   const startProcess = async () => {
     try {
-      await fetch('http://localhost:3000/control/start', { method: 'POST' });
+      await fetch(`${API_BASE_URL}/control/start`, { method: 'POST' });
       onStatusChange();
     } catch (error) {
       console.error('Error starting process:', error);
@@ -12,7 +14,7 @@ const ControlButton = ({ onStatusChange }) => {
 
   const stopProcess = async () => {
     try {
-      await fetch('http://localhost:3000/control/stop', { method: 'POST' });
+      await fetch(`${API_BASE_URL}/control/stop`, { method: 'POST' });
       onStatusChange();
     } catch (error) {
       console.error('Error stopping process:', error);
