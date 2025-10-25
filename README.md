@@ -1,4 +1,4 @@
-# 🧠 Campaign Play Processor
+# 💻 Campaign Play Processor
 
 Small full-stack project that simulates and processes asynchronous campaign play events, inspired by BlindSpot’s real-world workflow.
 

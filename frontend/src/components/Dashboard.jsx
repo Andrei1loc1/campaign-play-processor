@@ -6,6 +6,8 @@ import Refresh from './Refresh'
 import ControlButton from './ControlButton'
 import { TABLE_REFRESH_MS } from '../../../backend/src/config/config.js'
 
+const API_BASE_URL = process.env.APP_API_BASE_URL;
+
 const Dashboard = () => {
   const [campaigns, setCampaigns] = useState({});
   const [lastUpdate, setLastUpdate] = useState(new Date());
@@ -13,7 +15,7 @@ const Dashboard = () => {
 
   const fetchCampaignData = async () => {
     try {
-      const response = await fetch('http://localhost:3000/campaigns');
+      const response = await fetch(`${API_BASE_URL}/campaigns`);
       if (!response.ok) {
         throw new Error(`HTTP error: ${response.status}`);
       }
