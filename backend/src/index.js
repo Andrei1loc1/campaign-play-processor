@@ -3,6 +3,9 @@ import cors from 'cors';
 import eventsRouter from './api/events.js';
 import campaignsRouter from './api/campaigns.js';
 import controlRouter from './api/control.js';
+import { initializeDB } from './core/eventLog.js';
+
+await initializeDB();
 
 const app = express();
 const PORT = process.env.PORT || 3000;
