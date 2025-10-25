@@ -4,7 +4,7 @@ import EventSimulator from './EventSimulator'
 import ProcessStatus from './ProcessStatus'
 import Refresh from './Refresh'
 import ControlButton from './ControlButton'
-import { TABLE_REFRESH_MS } from '../../../backend/src/config/config.js'
+import { TABLE_REFRESH_MS } from '../constants/variable.js'
 import { API_BASE_URL } from '../constants/variable.js'
 
 
