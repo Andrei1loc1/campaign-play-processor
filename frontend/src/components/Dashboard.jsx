@@ -8,7 +8,7 @@ import { TABLE_REFRESH_MS } from '../../../backend/src/config/config.js'
 
 
 const Dashboard = () => {
-  const API_BASE_URL = process.env.SERVER_APP_API_URL;
+  const API_BASE_URL = process.env.VITE_API_BASE_URL;
   const [campaigns, setCampaigns] = useState({});
   const [lastUpdate, setLastUpdate] = useState(new Date());
   const [processRunning, setProcessRunning] = useState(false);
