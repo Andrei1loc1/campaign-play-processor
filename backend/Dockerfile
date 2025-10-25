@@ -1,25 +1,18 @@
-# backend/Dockerfile - Versiunea Robustă și Optimizată
+# backend/Dockerfile
 
-# 1. Folosim o imagine standard Node.js (bazată pe Debian) care include 
-# toate instrumentele necesare pentru a compila dependințe native ca sqlite3.
-FROM node:20 
+# Folosește imaginea minimalistă (nu mai avem nevoie de build tools)
+FROM node:20-alpine 
 
 # Setează directorul de lucru
 WORKDIR /usr/src/app
 
-# 2. Copiază fișierele de manifest și le instalează.
-# Acest pas folosește cache-ul Docker cel mai eficient.
+# Copiază și instalează dependențele (curate, fără sqlite3)
 COPY package*.json ./
+RUN npm install --production 
 
-# 3. Instalare doar pentru producție (exclusiv devDependencies)
-RUN npm install --production
-
-# 4. Copiază restul codului sursă.
-# (Include src/, core/, Helpers/ și EventLogger.js)
+# Copiază restul codului sursă
 COPY . .
 
-# Expune portul
+# Expune și pornește
 EXPOSE 3000
-
-# Comanda de start
 CMD ["npm", "start"]
